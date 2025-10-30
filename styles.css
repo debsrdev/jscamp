@@ -101,7 +101,8 @@ nav {
 }
 
 /* Botones del Header */
-header div a, .filters > select {
+header div a,
+.filters > select {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   background-color: #334155;
@@ -158,6 +159,7 @@ form {
   background-color: var(--form-background);
   display: flex;
   align-items: center;
+  border-radius: 0.5rem;
 }
 
 form > div {
@@ -314,9 +316,9 @@ article {
 
 /* Página - Resultados de búsqueda */
 #search-results {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* Primera section - Titulo y form */
@@ -326,12 +328,12 @@ article {
 }
 
 .filters {
-    padding: 1rem 0;
-    display: flex;
-    gap: 1rem;
-    justify-content: left;
-    width: 100%;
-    max-width: 42rem;
+  padding: 1rem 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: left;
+  width: 100%;
+  max-width: 42rem;
 }
 
 /* Segunda section - Resultados de búsqueda */
@@ -365,12 +367,12 @@ article {
         margin-bottom: 16px;
 
         h3 {
-            font-weight: 600;
+          font-weight: 600;
         }
 
         div {
-            display: flex;
-            gap: 0.5rem;
+          display: flex;
+          gap: 0.5rem;
         }
       }
 
@@ -384,22 +386,29 @@ article {
 }
 
 #search-results > section:nth-child(2) > footer > article > div > p {
-    color: var(--text-primary);
-    font-size: 0.875rem;
+  color: var(--text-primary);
+  font-size: 0.875rem;
 }
 
 .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding: 2rem 0;
+  justify-content: center;
+  padding: 2rem 0;
 
-    button {
-        background: unset;
-        &.active {
-            background: var(--primary-light);
-            color: white;
-        }
+  ul {
+    display: flex;
+    gap: 1rem;
+
+    li {
+      background: unset;
+      list-style: none;
+      padding: 1rem;
+      line-height: 0.5rem;
+      align-self: center;
+      border-radius: 0.5rem;
+      &.active {
+        background: var(--primary-light);
+        color: white;
+      }
     }
+  }
 }
