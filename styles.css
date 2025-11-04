@@ -393,22 +393,28 @@ article {
 .pagination {
   justify-content: center;
   padding: 2rem 0;
+  display: flex;
+  gap: 1rem;
 
-  ul {
-    display: flex;
-    gap: 1rem;
-
-    li {
-      background: unset;
-      list-style: none;
-      padding: 1rem;
-      line-height: 0.5rem;
-      align-self: center;
-      border-radius: 0.5rem;
-      &.active {
-        background: var(--primary-light);
-        color: white;
-      }
+  a {
+    background: unset;
+    list-style: none;
+    padding: 1rem;
+    line-height: 0.5rem;
+    align-self: center;
+    border-radius: 0.5rem;
+    &.active {
+      background-color: var(--primary-light);
+      color: white;
+      pointer-events: none;
+    }
+    &:hover,
+    &:focus {
+      background-color: var(--primary-hover);
+      color: white;
+    }
+    &:active {
+      transform: scale(0.75);
     }
   }
 }
