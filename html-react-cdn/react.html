@@ -17,14 +17,13 @@
 
     <script type="text/babel">
 
-/*         const titulo = React.createElement(
+    /*  const titulo = React.createElement(
             'h1',
             { style : { color: '#4A90E2', fontSize: '1.5rem' } },
             'Hola React.js!'
         ) */
 
         // Elemento de React usando JSX
-
         const titulo = <h1 style={{color: "#4A90E2"}}>Hola React.js!</h1>;
         
         // Componente de React usando función
@@ -32,12 +31,46 @@
             return <p style={{color: color}}>Hola {nombre} desde un Componente de React!</p>;
         }
 
+        // Componente de tarjeta de trabajo
+        function JobCard({data, titulo, empresa, ubicacion, descripcion}) {
+            const [applied, setApplied] = React.useState(false);
+
+            function handleClick() {
+                setApplied(!applied);
+            }
+
+            const buttonText = applied ? "Aplicado" : "Aplicar";
+            const buttonClass = applied ? "is-applied" : "";
+
+            return (
+                <article className="job-card"
+                    data-modalidad={data?.modalidad}
+                    data-nivel={data?.nivel}
+                    data-technology={data?.technology}
+                >
+                    <div>
+                        <h3>{titulo}</h3>
+                        <div><p>{empresa}</p> | <p>{ubicacion}</p></div>
+                        <p>{descripcion}</p>
+                    </div>
+                    <button 
+                        // disabled={applied}
+                        className={`button-apply-job ${buttonClass}`}
+                        onClick={handleClick}>{buttonText}</button>
+                </article>
+            );
+        }
+
         function App() {
             return (
-                <div>
-                    <Titulo nombre="Débora" color="#4A90E2" />
-                    <Titulo nombre="Roberto" color="#E94E77" />
-                    <Titulo nombre="Carmen" color="#F5A623" />
+                <div className="job-results">
+                    <JobCard 
+                        titulo="Desarrollador Frontend React.js" 
+                        empresa="Tech Solutions" 
+                        ubicacion="Remoto" 
+                        descripcion="Únete a nuestro equipo como Desarrollador Frontend especializado en React.js. Trabaja en proyectos innovadores y colabora con un equipo dinámico."
+                        data={{modalidad: 'remoto', nivel: 'mid-level', technology: 'frontend'}}
+                    />
                 </div>
             );
         }
@@ -69,7 +102,14 @@
     <main id="search-results">
         <section>
             <h1>React.js, primeros pasos</h1>
-            <div id="react-root"></div>
+        </section>
+        <section>
+            <header>
+                <h2>Resultados de búsqueda</h2>
+            </header>
+            <footer>
+                <div id="react-root"></div>
+            </footer>
         </section>
     </main>
     <footer>

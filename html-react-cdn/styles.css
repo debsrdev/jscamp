@@ -380,6 +380,9 @@ article {
         max-width: 100px;
         height: fit-content;
         justify-self: flex-end;
+        &.is-applied {
+          background-color: green;
+        }
       }
     }
   }
