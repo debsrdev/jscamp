@@ -1,4 +1,4 @@
-function Header() {
+export function Header() {
   return (
       <header>
         <h1>
@@ -26,7 +26,5 @@ function Header() {
           <a href="">Subir CV</a>
         </div>
       </header>
-  );
+  )
 }
-
-export default Header;

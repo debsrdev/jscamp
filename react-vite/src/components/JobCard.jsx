@@ -1,4 +1,4 @@
-function JobCard({ job }) {
+export function JobCard({ job }) {
   const { title, company, location, description } = job;
   return (
     <article>
@@ -12,7 +12,5 @@ function JobCard({ job }) {
       </div>
       <button className="btn-apply">Aplicar</button>
     </article>
-  );
+  )
 }
-
-export default JobCard;
