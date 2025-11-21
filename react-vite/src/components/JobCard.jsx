@@ -1,5 +1,16 @@
+import { useState } from "react"
+
 export function JobCard({ job }) {
-  const { titulo, empresa, ubicacion, descripcion } = job;
+  const [isApplied, setIsApplied] = useState(false)
+  const { titulo, empresa, ubicacion, descripcion } = job
+
+  const handleApplyClick = () => {
+    setIsApplied(true)
+  }
+
+  const buttonClasses = isApplied ? "btn-apply-job is-applied" : "btn-apply-job"
+  const buttonText = isApplied ? "Aplicado" : "Aplicar"
+
   return (
     <article>
       <div>
@@ -10,7 +21,7 @@ export function JobCard({ job }) {
         </div>
         <p className="job-description">{descripcion}</p>
       </div>
-      <button className="btn-apply">Aplicar</button>
+      <button className={buttonClasses} onClick={handleApplyClick}>{buttonText}</button>
     </article>
   )
 }
