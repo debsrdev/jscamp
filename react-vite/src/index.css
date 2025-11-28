@@ -174,6 +174,10 @@ form > div {
   width: 100%;
 }
 
+.searchTip {
+    padding: 1rem;
+}
+
 form span {
   padding-left: 0.75rem;
   color: var(--text-muted);
@@ -341,7 +345,7 @@ article {
 
 /* Segunda section - Resultados de búsqueda */
 
-#search-results > section:nth-child(2) {
+#search-results > section.search-results-section {
   header {
     flex-direction: unset;
   }

@@ -1,16 +1,10 @@
-import { useId } from "react";
+import { useId, useState} from "react";
 
-export function Form({ onSearch, onTextFilter }) {
-  const idText = useId();
-  const idTechnology = useId();
-  const idLocation = useId();
-  const idType = useId();
-  const idExperienceLevel = useId();
-
+const useSearchForm = (idText, idTechnology, idLocation, idType, idExperienceLevel, onSearch) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.currentTarget);
 
     const filters = {
       search: formData.get(idText),
@@ -21,21 +15,34 @@ export function Form({ onSearch, onTextFilter }) {
     };
 
     onSearch(filters)
-    console.log("Filtros de búsqueda: ", filters)
   }
 
-  const handleTextChange = (event) => {
-    const text = event.target.value;
+  return handleSubmit
+}
 
-    onTextFilter(text);
-    console.log("Texto que se va escribiendo: ", text);
-  }
+export function Form({ onSearch }) {
+  const idText = useId()
+  const idTechnology = useId()
+  const idLocation = useId()
+  const idType = useId()
+  const idExperienceLevel = useId()
+  
+  const handleSubmit = useSearchForm(
+    idText,
+    idTechnology,
+    idLocation,
+    idType,
+    idExperienceLevel,
+    onSearch
+  );
+
+  const [showTip, setShowTip] = useState(false);
 
   return (
     <section>
       <h1>Encuentra tu próximo trabajo</h1>
       <p>Explora miles de oportunidades en el sector tecnológico</p>
-      <form onSubmit={handleSubmit} action="search">
+      <form onChange={handleSubmit} action="search">
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -57,11 +64,17 @@ export function Form({ onSearch, onTextFilter }) {
             type="search"
             name={idText}
             id={idText}
-            onChange={handleTextChange}
             placeholder="Buscar trabajos por empresas o habilidades"
+            onFocus={() => setShowTip(true)}
+            onBlur={() => setShowTip(false)}
           />
-          <button type="submit">Buscar</button>
         </div>
+        {showTip && (
+          <p className="searchTip">
+            Puedes buscar por palabras clave, por ejemplo: "React", "Node.js",
+            "Remoto"
+          </p>
+        )}
         <div className="filters">
           <select name={idTechnology} id={idTechnology}>
             <option value="">Tecnología</option>

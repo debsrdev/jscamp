@@ -1,48 +1,23 @@
-import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
 import { Header } from "./components/Header.jsx";
 import { Footer } from "./components/Footer.jsx";
-import { Form } from "./components/Form.jsx";
-import { JobListings } from "./components/JobListings.jsx";
 
-import jobsData from "./data.json";
+import { HomePage } from "./pages/Home.jsx";
+import { SearchPage } from "./pages/Search.jsx";
 
 function App() {
-  const [textToFilter, setTextToFilter] = useState("");
-  const [filters, setFilters] = useState({
-    technology: "",
-    ubicacion: "",
-    type: "",
-    experienceLevel: "",
-  });
 
-  const jobsFilteredByFilters = jobsData.filter((job) => {
-    return (
-      filters.technology === "" ||
-      job.data.technology.toLowerCase() === filters.technology.toLowerCase()
-    )
-  })
-
-  const jobsWithTextFilter =
-    textToFilter === ""
-      ? jobsFilteredByFilters
-      : jobsFilteredByFilters.filter((job) => {
-          return job.titulo.toLowerCase().includes(textToFilter.toLowerCase());
-        });
-
-  const handleSearch = (filters) => {
-    setFilters(filters);
-  };
-
-  const handleTextFilter = (newTextToFilter) => {
-    setTextToFilter(newTextToFilter);
-  };
+  
 
   return (
     <>
       <Header />
-      <main id="search-results">
-        <Form onSearch={handleSearch} onTextFilter={handleTextFilter} />
-        <JobListings jobs={jobsWithTextFilter} />
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/search" element={<SearchPage />} />
+        </Routes>
       </main>
       <Footer />
     </>
