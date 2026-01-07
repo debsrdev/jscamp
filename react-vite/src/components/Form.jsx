@@ -1,4 +1,6 @@
-import { useId, useState} from "react";
+import { useId, useState} from "react"
+
+let timeoutId = null
 
 const useSearchForm = (idText, idTechnology, idLocation, idType, idExperienceLevel, onSearch) => {
   const handleSubmit = (event) => {

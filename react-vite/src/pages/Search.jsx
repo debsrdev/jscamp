@@ -80,12 +80,18 @@ export function SearchPage() {
         <Form onSearch={handleSearch} />
         <div style={{ maxWidth: "42rem", width: "100%", margin: "0 auto" }}>
           <button
-            style={{ display: hasActiveFilters ? "block" : "none", width: "100%" }}
+            style={{
+              display: hasActiveFilters ? "block" : "none",
+              width: "100%",
+            }}
             onClick={handleClearFilters}
           >
             Limpiar filtros
           </button>
         </div>
+        <header>
+          <h2>Resultados de búsqueda</h2>
+        </header>
         <JobListings
           jobs={jobs}
           total={total}

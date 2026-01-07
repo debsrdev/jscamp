@@ -6,25 +6,22 @@ import { Pagination } from "./Pagination.jsx";
 export function JobListings({ 
   jobs, total, loading, currentPage, totalPages, onPageChange }) {
 
-  useEffect(() => {
-    document.title = `Resultados: ${total} - Página ${currentPage} - DevJobs`;
-  }, [currentPage, total]);
+  const title = loading 
+  ? `Cargando...` 
+  : `Resultados: ${total} - Página ${currentPage} - DevJobs`;
 
   const handlePageChange = (page) => {
-    console.log("Cambiando a página: ", page);
     onPageChange(page);
   };
   return (
     <>
+      <title>{title}</title>
       {loading ? (
         <p>Cargando empleos...</p>
       ) : jobs.length === 0 ? (
         <p>No se encontraron empleos.</p>
       ) : (
         <section className="search-results-section">
-          <header>
-            <h2>Resultados de búsqueda</h2>
-          </header>
           <footer>
             {jobs.map((job) => (
               <JobCard key={job.id} job={job} />

@@ -9,7 +9,7 @@ export function Header() {
     // Handler que se ejecuta cuando la ventana cambia de tamaño
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
-      console.log("Ancho de la ventana: ", window.innerWidth);
+      //console.log("Ancho de la ventana: ", window.innerWidth);
     };
 
     // Suscribirse al evento resize
